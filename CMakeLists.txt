@@ -22,6 +22,9 @@ target_include_directories(iohelper PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+# Configure pkg-config file
+configure_file(iohelper.pc.in iohelper.pc @ONLY)
+
 # Install library
 include(GNUInstallDirs)
 if(WIN32 AND MINGW)
