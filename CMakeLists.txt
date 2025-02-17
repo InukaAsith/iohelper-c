@@ -24,17 +24,23 @@ target_include_directories(iohelper PRIVATE
 
 # Install library
 include(GNUInstallDirs)
-install(TARGETS iohelper
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/iohelper
-)
-
-# Generate and install pkg-config file
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/iohelper.pc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/iohelper.pc
-    @ONLY
-)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/iohelper.pc
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
-)
+if(WIN32 AND MINGW)
+    # MinGW-specific installation paths
+    install(TARGETS iohelper
+        RUNTIME DESTINATION "${MINGW_PREFIX}/bin"
+        LIBRARY DESTINATION "${MINGW_PREFIX}/lib"
+        PUBLIC_HEADER DESTINATION "${MINGW_PREFIX}/include/iohelper"
+    )
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/iohelper.pc
+        DESTINATION "${MINGW_PREFIX}/lib/pkgconfig"
+    )
+else()
+    # Standard installation paths for other platforms
+    install(TARGETS iohelper
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/iohelper
+    )
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/iohelper.pc
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+    )
+endif()
