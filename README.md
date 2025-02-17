@@ -96,7 +96,21 @@ cmake --install .
 ### Windows (MinGW)
 
 1. Install MinGW and make sure it's added to your PATH
-2. Open Command Prompt in the project directory and run:
+   - Go to the official MSYS2 website:
+   - 🔗 https://www.msys2.org/
+   - Download the MSYS2 installer (msys2-x86_64-*.exe).
+   - Run the installer and follow the instructions.
+   - Install it in a location like C:\msys64.
+       
+    ```sh
+    pacman -Syu
+    pacman -S mingw-w64-ucrt-x86_64-gcc
+    pacman -S mingw-w64-ucrt-x86_64-make
+    ```
+    - add 'C:\msys64\ucrt64\bin` to PATH
+        
+
+3. Open Command Prompt in the project directory and run:
 ```cmd
 winget install cmake
 mkdir build
