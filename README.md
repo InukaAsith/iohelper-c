@@ -21,13 +21,13 @@
 Include the header file in your C program:
 
 ```c
-#include <iohelper.h>
+#include <iohelper/iohelper.h>
 ```
 
 ### Example
 
 ```c
-#include <iohelper.h>
+#include <iohelper/iohelper.h>
 #include <stdio.h>
 
 int main() {
@@ -36,6 +36,30 @@ int main() {
     // Memory is automatically managed
     return 0;
 }
+```
+
+## Compiling with GCC
+
+After installing the library, you can compile your programs using GCC with the following flags:
+
+```bash
+# Basic compilation
+gcc your_program.c -liohelper -o your_program
+
+# If the library is not in the standard path, specify the path:
+gcc your_program.c -L/usr/local/lib -I/usr/local/include -liohelper -o your_program
+```
+
+Note: The order of flags matters. The `-liohelper` flag should come after your source files.
+
+### Example Compilation
+
+```bash
+# Compile hello.c
+gcc hello.c -liohelper -o hello
+
+# Run the program
+./hello
 ```
 
 ## Installation
