@@ -98,6 +98,7 @@ cmake --install .
 1. Install MinGW and make sure it's added to your PATH
 2. Open Command Prompt in the project directory and run:
 ```cmd
+winget install cmake
 mkdir build
 cd build
 cmake .. -G "MinGW Makefiles"
