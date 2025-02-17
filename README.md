@@ -85,6 +85,7 @@ cd iohelper
 1. Download and extract the repository
 2. Open Command Prompt and run:
 ```cmd
+winget install cmake
 mkdir build
 cd build
 cmake ..
